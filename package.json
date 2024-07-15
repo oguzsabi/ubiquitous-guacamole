@@ -1,0 +1,40 @@
+{
+  "name": "ubiquitous-guacamole",
+  "version": "1.0.0",
+  "main": "src/server.ts",
+  "type": "commonjs",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "start": "npx tsc && node dist/src/server.js",
+    "compile": "ts-node src/compile.ts",
+    "chain": "cd hardhat && npx hardhat node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "esModuleInterop": true
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^20.14.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "hardhat": "^2.22.6",
+    "solc": "^0.8.26",
+    "web3": "^4.11.0"
+  }
+}

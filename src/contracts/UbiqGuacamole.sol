@@ -14,7 +14,7 @@ contract UbiqGuacamole is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
     uint256 public constant MAX_SUPPLY = 5000;
     bytes32 private lastHash;
     uint256 private seed;
-    uint256 private constant COOLDOWN_PERIOD = 5 minutes;
+    uint256 private constant COOLDOWN_PERIOD = 0 minutes;
     uint256 private lastGenerationTimestamp;
     mapping(address => uint256) private userRequestData;
 
@@ -63,7 +63,7 @@ contract UbiqGuacamole is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
         lastHash = blockhash(block.number - 1);
         seed = uint256(
             keccak256(
-                abi.encodePacked(block.timestamp, block.difficulty, msg.sender)
+                abi.encodePacked(block.timestamp, block.prevrandao, msg.sender)
             )
         );
         lastGenerationTimestamp = block.timestamp;
@@ -128,7 +128,7 @@ contract UbiqGuacamole is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
             abi.encodePacked(
                 lastHash,
                 block.timestamp,
-                block.difficulty,
+                block.prevrandao,
                 block.coinbase,
                 blockhash(block.number - 1),
                 msg.sender,
